@@ -10,7 +10,7 @@ This is a portable template designed to be easily imported into any Dataiku DSS 
 
 Before importing, please ensure you have the following configured on your Dataiku DSS instance:
 
-1.  **Dataiku Version:** DSS 12.0
+1.  **Dataiku Version:** DSS 12.0+
 2.  **Required Connections:** The Flow uses placeholder connections. You must have the following equivalent connections defined on your instance:
     * `[SOURCE_DB_NAME]`: Used for raw data extraction.
     * `[OUTPUT_FILES_STORE]`: Used for final report storage (e.g., S3, Azure Blob, or a Local Folder).
@@ -44,16 +44,16 @@ This project requires a user-defined **Project Variable** to function correctly.
 
 | Key (Variable Name) | Description | Example Value |
 | :--- | :--- | :--- |
-| **`file_path`** | Unique identifier for your environment. Used in SQL queries/paths. | `_DEV` or `_TESTING` |
+| **`file_path`** | This is the path in S3 for the images to be annotated | /data/dataiku/bbox_1/ |
 
-> **How it's Used:** Recipes within the project reference this variable using the syntax `${ENV_SUFFIX}` to dynamically adjust table names, schema paths, or output folder names to ensure isolation from other environments.
+> **How it's Used:** Change this value to have the project load images from other locations.
 
 ## Final Step: Build the Flow
 
-Once the connections and the `ENV_SUFFIX` variable are configured:
+Once the connections and the `file_path` variable are configured:
 
 1.  Navigate to the **Flow** view.
-2.  Select the final output dataset (e.g., `p9_Final_Report_Summary`).
+2.  Select the final output dataset (e.g., `annotated_images_final`).
 3.  Click **Build** and choose the datasets you wish to generate.
 
 ---
