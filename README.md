@@ -23,7 +23,7 @@ Before importing, please ensure you have the following configured on your Dataik
 ### Step 2: Import into Dataiku DSS
 
 1.  Navigate to the **Dataiku DSS Homepage**.
-2.  Click **`+ New Project`** $\rightarrow$ **`Import project`**.
+2.  Request a new project
 3.  Upload the downloaded `.zip` archive.
 4.  Choose a unique **Project Key** (e.g., `yolo-train-evan`).
 
