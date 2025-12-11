@@ -4,7 +4,7 @@ This repository serves as the distribution hub for a Dataiku DSS project bundle 
 
 This is a portable template designed to be easily imported into any Dataiku DSS instance.
 
-## Quick Start: Import and Configuration
+## Import and Configuration
 
 ### Prerequisites
 
@@ -27,12 +27,9 @@ Before importing, please ensure you have the following configured on your Dataik
 3.  Upload the downloaded `.zip` archive.
 4.  Choose a unique **Project Key** (e.g., `SALES_RPT_DEV`).
 
-### Step 3: Configure Connections (Remapping)
+### Step 3: Remapping Connections
 
-The imported project will have broken links to external storage. You must remap them:
-
-1.  Go to **Project Settings** (gear icon) $\rightarrow$ **Connections**.
-2.  For each placeholder connection listed in the project, click **"Remap"** and select the actual, valid connection from your DSS instance (e.g., map the placeholder `[SOURCE_DB_NAME]` to your `Snowflake_Dev_Database`).
+The imported project may have broken links to external storage, and the connections will need to be remapped before the import can complete. 
 
 ## Step 4: Critical Customization (Environment Variable)
 
@@ -58,13 +55,28 @@ Once the connections and the `file_path` variable are configured:
 
 ---
 
-## Project Architecture Overview
+## Project Architecture Overview (Image Annotation & ML)
 
-This project template consists of three main Flow zones:
+This project template is structured around the core phases of the Machine Learning lifecycle for computer vision tasks. The Flow is organized into distinct zones for data ingestion, labeling, model training, and deployment.
 
-1.  **Extraction Zone (p1_RAW):** Reads raw data from the `[SOURCE_DB_NAME]` connection.
-2.  **Preparation Zone (p2_CLEAN):** Standardizes date formats, handles missing values, and calculates initial metrics.
-3.  **Reporting Zone (p3_FINAL):** Joins prepared data, applies final business logic, and writes the output to the `[OUTPUT_FILES_STORE]`.
+1.  **Extraction & Ingestion Zone (p1_INGEST):**
+    * **Purpose:** Reads raw image files from the `[IMAGE_STORE_CONNECTION]` (e.g., S3 bucket or local folder) and imports any initial metadata (e.g., product IDs, timestamps) from `[METADATA_DB_CONN]`.
+    * **Output:** An initial dataset containing file paths and metadata, ready for the labeling phase.
+
+2.  **Annotation & Preparation Zone (p2_LABEL):**
+    * **Purpose:** This zone orchestrates the critical human-in-the-loop steps.
+    * **Key Action:** Sends a subset of images to an **Annotation Task** (using Dataiku's built-in labeling interface or an external service).
+    * **Processes:** Reads the final human-verified **Annotation Labels (JSON/CSV)**, performs quality control (QC), and joins the labels back to the original image file paths.
+
+3.  **Model Development Zone (p3_TRAIN):**
+    * **Purpose:** Handles feature engineering (if needed), splits the labeled data, and trains the computer vision model.
+    * **Processes:** **Data Split** (Train/Validation/Test sets), uses a **Python/Deep Learning Recipe** with frameworks like PyTorch or TensorFlow, and outputs the trained model object. [Image of the typical machine learning workflow and lifecycle]
+    * **Output:** The fully trained and versioned **Model** object stored in the Model Registry.
+
+4.  **Evaluation & Deployment Zone (p4_EVAL):**
+    * **Purpose:** Assesses the model's performance and prepares it for production use.
+    * **Processes:** **Model Evaluation Recipe** (calculating metrics like accuracy, precision, and F1-score), and a **Deployment Recipe** that creates an API endpoint (if the model is served in real-time).
+    * **Output:** A deployed **API Endpoint** or a batch scoring recipe that writes predictions back to the `[OUTPUT_DB_CONN]`.
 
 ## Troubleshooting
 
