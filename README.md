@@ -25,7 +25,7 @@ Before importing, please ensure you have the following configured on your Dataik
 1.  Navigate to the **Dataiku DSS Homepage**.
 2.  Click **`+ New Project`** $\rightarrow$ **`Import project`**.
 3.  Upload the downloaded `.zip` archive.
-4.  Choose a unique **Project Key** (e.g., `SALES_RPT_DEV`).
+4.  Choose a unique **Project Key** (e.g., `yolo-train-evan`).
 
 ### Step 3: Remapping Connections
 
@@ -60,13 +60,13 @@ Once the connections and the `file_path` variable are configured:
 This project template is structured around the core phases of the Machine Learning lifecycle for computer vision tasks. The Flow is organized into distinct zones for data ingestion, labeling, model training, and deployment.
 
 1.  **Extraction & Ingestion Zone (p1_INGEST):**
-    * **Purpose:** Reads raw image files from the `[IMAGE_STORE_CONNECTION]` (e.g., S3 bucket or local folder) and imports any initial metadata (e.g., product IDs, timestamps) from `[METADATA_DB_CONN]`.
+    * **Purpose:** Reads raw image files from the S3 location
     * **Output:** An initial dataset containing file paths and metadata, ready for the labeling phase.
 
 2.  **Annotation & Preparation Zone (p2_LABEL):**
     * **Purpose:** This zone orchestrates the critical human-in-the-loop steps.
-    * **Key Action:** Sends a subset of images to an **Annotation Task** (using Dataiku's built-in labeling interface or an external service).
-    * **Processes:** Reads the final human-verified **Annotation Labels (JSON/CSV)**, performs quality control (QC), and joins the labels back to the original image file paths.
+    * **Key Action:** Sends a subset of images to an **Annotation Task**
+    * **Processes:** Reads the final human-verified **Annotation Labels (JSON/CSV)**
 
 3.  **Model Development Zone (p3_TRAIN):**
     * **Purpose:** Handles feature engineering (if needed), splits the labeled data, and trains the computer vision model.
