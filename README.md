@@ -70,8 +70,7 @@ This project template is structured around the core phases of the Machine Learni
 
 3.  **Model Development Zone (p3_TRAIN):**
     * **Purpose:** Handles feature engineering (if needed), splits the labeled data, and trains the computer vision model.
-    * **Processes:** **Data Split** (Train/Validation/Test sets), uses a **Python/Deep Learning Recipe** with frameworks like PyTorch or TensorFlow, and outputs the trained model object. [Image of the typical machine learning workflow and lifecycle]
-    * **Output:** The fully trained and versioned **Model** object stored in the Model Registry.
+    * **Processes:** **Data Split** (Train/Validation/Test sets), uses a **Python/Deep Learning Recipe** with frameworks like PyTorch or TensorFlow, and outputs the trained model object.
 
 4.  **Evaluation & Deployment Zone (p4_EVAL):**
     * **Purpose:** Assesses the model's performance and prepares it for production use.
