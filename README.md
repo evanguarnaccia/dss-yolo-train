@@ -12,8 +12,8 @@ Before importing, please ensure you have the following configured on your Dataik
 
 1.  **Dataiku Version:** DSS 12.0+
 2.  **Required Connections:** The Flow uses placeholder connections. You must have the following equivalent connections defined on your instance:
-    * `[SOURCE_DB_NAME]`: Used for raw data extraction.
-    * `[OUTPUT_FILES_STORE]`: Used for final report storage (e.g., S3, Azure Blob, or a Local Folder).
+    * `[SOURCE_DB_NAME]`: Used for raw data extraction
+    * `[OUTPUT_FILES_STORE]`: Used for final report storage
 
 ### Step 1: Download the Bundle
 
