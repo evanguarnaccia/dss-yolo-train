@@ -31,9 +31,9 @@ Before importing, please ensure you have the following configured on your Dataik
 
 The imported project may have broken links to external storage, and the connections will need to be remapped before the import can complete. 
 
-## Step 4: Critical Customization (Environment Variable)
+### Step 4: Customize Environment Variable
 
-This project requires a user-defined **Project Variable** to function correctly. This variable tells the recipes which specific identifier to use in your environment.
+This project requires a user-defined **Project Variable** to function correctly. This variable is the location in S3 of the images.
 
 1.  Go to **Project Settings** (gear icon) $\rightarrow$ **Variables**.
 2.  Under the **"Custom Project Variables"** section, click **`+ Add a new variable`**.
@@ -45,7 +45,7 @@ This project requires a user-defined **Project Variable** to function correctly.
 
 > **How it's Used:** Change this value to have the project load images from other locations.
 
-## Final Step: Build the Flow
+### Final Step: Build the Flow
 
 Once the connections and the `file_path` variable are configured:
 
