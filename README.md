@@ -17,8 +17,8 @@ Before importing, please ensure you have the following configured on your Dataik
 
 ### Step 1: Download the Bundle
 
-1.  Go to the **[Releases](https://github.com/YourOrg/repo-name/releases)** tab of this repository.
-2.  Download the `.zip` file asset corresponding to the desired version (e.g., `[Project-Name]-v1.0.0.zip`).
+1.  Go to the **[Releases](https://github.com/evanguarnaccia/dss-yolo-train/releases)** tab of this repository.
+2.  Download the `.zip` file asset corresponding to the desired version (e.g., `[Project-Name]-v1.0.zip`).
 
 ### Step 2: Import into Dataiku DSS
 
