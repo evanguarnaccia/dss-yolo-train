@@ -44,7 +44,7 @@ This project requires a user-defined **Project Variable** to function correctly.
 
 | Key (Variable Name) | Description | Example Value |
 | :--- | :--- | :--- |
-| **`ENV_SUFFIX`** | Unique identifier for your environment. Used in SQL queries/paths. | `_DEV` or `_TESTING` |
+| **`file_path`** | Unique identifier for your environment. Used in SQL queries/paths. | `_DEV` or `_TESTING` |
 
 > **How it's Used:** Recipes within the project reference this variable using the syntax `${ENV_SUFFIX}` to dynamically adjust table names, schema paths, or output folder names to ensure isolation from other environments.
 
